@@ -5,12 +5,52 @@
 <head>
     {% load static %}
   <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/x-icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdarkoperator.gallerycdn.vsassets.io%2Fextensions%2Fdarkoperator%2Fsysmon%2F1.2.0%2F1589547431846%2FMicrosoft.VisualStudio.Services.Icons.Default&f=1&nofb=1&ipt=307b80a90d0bd6baf80134db9ce978d1065bc9dbb856677ecca7415f42fdc981&ipo=images">
   <title>SYSMON x MITRE</title>
-  <link rel="stylesheet" href="{% static 'style.css' %}" />
+  <link rel="stylesheet" href="{% static 'style.css' %}?v=1" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script type="text/javascript" src="{% static 'jquery.js' %}"></script>
+    <script>
+        function myFunction(bid) {
+          var x = document.getElementById("step2");
+          var s3 = document.getElementById("step3");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+            s3.style.display = "block";
+          }
+          var low = document.getElementById("matrixlow");
+          var mid = document.getElementById("matrixmid");
+          var high = document.getElementById("matrixhigh");
+          if (bid === "1") {
+            low.style.display = "block";
+            mid.style.display = "none";
+            high.style.display = "none"
+
+          }
+          if (bid === "2") {
+            mid.style.display = "block";
+            high.style.display = "none";
+            low.style.display = "none";
+
+          }
+          if (bid === "3") {
+            high.style.display = "block";
+            mid.style.display = "none";
+            low.style.display = "none";
+          }
+        }
+        function downloadFunc(){
+            var file = "{% static 'config.xml' %}";
+            var link = document.createElement("a");
+            link.download = "config.pdf";
+            link.href = file;
+            link.click();
+        }
+    </script>
+
 </head>
 <body>
   <div id="Title">
@@ -23,21 +63,29 @@
   <span id="detLevel">
     Select the level of detection:
    </span>
-    <button class="button low" id="1" onclick="prepS2(this.id)">Low</button>
-	<button class="button medium" id="2" onclick="prepS2(this.id)">Medium</button>
-    <button class="button high" id="3" onclick="prepS2(this.id)">High</button>
+    <button class="button low" id="1" onclick="myFunction(this.id)" data-src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_low.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false">Low</button>
+	<button class="button medium" id="2" onclick="myFunction(this.id)" data-src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_mid.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false">Medium</button>
+    <button class="button high" id="3" onclick="myFunction(this.id)" data-src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_high.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false">High</button>
   </div>
-    <span id="tecCov">
-    Techniques covered:
-   </span>
-    <div id="matrix">
-       <iframe id="mat_frame" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayer%2520(3).json%3Ftoken%3DGHSAT0AAAAAAB6VSZBCOSOKHTKBYOTOQXTAY7I3X4A" width="1300" height="1000" marginwidth="20"></iframe>
+    <div id="step2" style="display:none">
+        <span id="tecCov">
+        Techniques covered:
+       </span>
+        <div id="matrixlow" style="display:none">
+           <iframe id="mat_frame_low" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_low.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+        </div>
+        <div id="matrixmid" style="display:none">
+           <iframe id="mat_frame_mid" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_mid.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+        </div>
+        <div id="matrixhigh" style="display:none">
+           <iframe id="mat_frame_high" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_high.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+        </div>
     </div>
-  <div id="step3">
+  <div id="step3" style="display:none">
     <span id="download">
       Ready to Download !
      </span>
-    <a href=""><button class="button download">Download</button></a>
+    <button id="down" class="button download" onclick="downloadFunc()">Download</button>
     </div>
 
 </body>

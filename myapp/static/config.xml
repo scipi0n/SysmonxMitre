@@ -1,0 +1,7 @@
+<CommandLine name="T1078.001 - Valid Accounts: Default Accounts" condition="contains all">net;user;guest;/active:yes</CommandLine>
+<CommandLine name="T1078.001 - Valid Accounts: Default Accounts" condition="contains all">net;user;guest</CommandLine>
+<Rule name="T1078.001 - Valid Accounts: Default Accounts" groupRelation="and">
+    <CommandLine condition="contains all">guest;/add</CommandLine>
+    <Image condition="is">net.exe</Image>
+</Rule>
+
