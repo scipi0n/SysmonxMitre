@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300&display=swap');
+
+body{
+  font-family: 'Kantumruy Pro', sans-serif;;
+  font-weight: bold;
+}
+
+#Title {
+  overflow: hidden;
+  font-family: 'Kantumruy Pro', sans-serif;;
+  font-weight: bold;
+  font-size: 50px;
+  margin: 20px;
+
+}
+
+#description {
+	width: 1030px;
+	overflow: hidden;
+	font-family: 'Kantumruy Pro', sans-serif;;
+	font-size: 20px;
+	font-weight: bold;
+  	margin: 20px;
+}
+
+
+#detLevel {
+  font-size: 16px;
+  text-align: left;
+  margin: 20px;
+}
+
+#tecCov {
+  font-size: 16px;
+  text-align: left;
+  margin: 20px;
+}
+
+#download {
+  margin: 20px;
+}
+
+#step2 {
+  margin-top:20px;
+}
+
+.button {
+  color: black;
+  font-family: 'Kantumruy Pro', sans-serif;;
+  font-weight: bold;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.low {background-color: #4CAF50;}
+.medium {background-color: yellow;}
+.high {background-color: red;}
+
+
+#customers {
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers td:active{background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
