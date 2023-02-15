@@ -14,7 +14,7 @@
 	},
 	"sorting": 0,
 	"layout": {
-		"layout": "side",
+		"layout": "flat",
 		"aggregateFunction": "average",
 		"showID": false,
 		"showName": true,
