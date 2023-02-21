@@ -4,8 +4,10 @@ from .event_src import Event1,Event3,Event5,Event7,Event8,Event10,Event11,Event1
 from .get_tecs import Get_Techniques
 
 class layer_reader:
-    def __init__(self,layer):
+    def __init__(self,layer,excludes,ips):
         self.layer = layer
+        self.excludes = excludes
+        self.ips = ips
         self.gen()
 
     def gen(self):
@@ -18,9 +20,9 @@ class layer_reader:
 
         excludes = [0] * 28
 
-        #if args.excludes:
-         #   for e in args.excludes:
-          #      excludes[int(e)-1] = 1
+        if self.excludes:
+            for e in self.excludes:
+                excludes[int(e)-1] = 1
 
          #eventos que quiere tener excludes
         ##Función que extraiga a partir de las técnicas los eventos que hay que recorrer

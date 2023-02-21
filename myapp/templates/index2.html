@@ -104,9 +104,9 @@
         <form class="mt-5" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <p>
-                {{ form.file }}
+                {{ form1.file }}
             </p>
-            <p><input type="submit" class="form-control-file" value="Upload"/></p>
+            <p><input type="submit" class="form-control-file" value="Subir"/></p>
         </form>
         <form method="post">
             {% csrf_token %}
@@ -131,9 +131,28 @@
             <div class="m-5 form-group">
                 <label for="exampleFormControlTextarea1">Direcciones IP a excluir (separadas por comas)</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <p>
+                    {{ form3.ips }}
+                </p>
                  <p class="text-center mt-2"><input type="submit" class="form-control-file" value="Guardar"/></p>
             </div>
                 </form>
+  </div>
+  <div id="test" class="container-fluid d-flex justify-content-center mt-5">
+      <h2 class="text-center">ESTO ES UNA PRUEBA</h2>
+      <form class="mt-5" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <p>
+              {{ form.file }}
+          </p>
+          <p>
+              {{ form.ips }}
+          </p>
+          <p>
+              {{ form.mult }}
+          </p>
+          <p><input type="submit" class="form-control-file" value="Subir"/></p>
+      </form>
   </div>
   </body>
 </html>
