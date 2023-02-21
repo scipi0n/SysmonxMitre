@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SysmonxMitre</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdarkoperator.gallerycdn.vsassets.io%2Fextensions%2Fdarkoperator%2Fsysmon%2F1.2.0%2F1589547431846%2FMicrosoft.VisualStudio.Services.Icons.Default&f=1&nofb=1&ipt=307b80a90d0bd6baf80134db9ce978d1065bc9dbb856677ecca7415f42fdc981&ipo=images">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+      <script>
+        function scrollSubirFichero(){
+            var sec = document.getElementById("paso2");
+            sec.scrollIntoView();
+        }
+        function scrollCrearFichero(){
+            var sec = document.getElementById("paso1");
+            sec.scrollIntoView();
+        }
+        function myFunction(bid) {
+          var low = document.getElementById("matrixlow");
+          var mid = document.getElementById("matrixmid");
+          var high = document.getElementById("matrixhigh");
+          var white = document.getElementById("matrixwhite");
+          if (bid === "1") {
+            white.style.display = "none";
+            low.style.display = "block";
+            mid.style.display = "none";
+            high.style.display = "none"
+
+          }
+          if (bid === "2") {
+            white.style.display = "none";
+            mid.style.display = "block";
+            high.style.display = "none";
+            low.style.display = "none";
+
+          }
+          if (bid === "3") {
+            white.style.display = "none";
+            high.style.display = "block";
+            mid.style.display = "none";
+            low.style.display = "none";
+          }
+        }
+      </script>
+  </head>
+  <body>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <!----ENCABEZADO-->
+    <header class="container-fluid bg-primary d-flex justify-content-center">
+      <p class="text-light mb-0 p-2 fs-5">Herramienta interna del SOC de NTT-DATA</p>
+    </header>
+    <!----------------------------------->
+    <h1 class="text-center mt-3">SYSMON X MITRE</h1>
+    <div id="description" class="d-flex justify-content-center" >
+	  <p class="text-dark fs-4">Genera un fichero de configuración de Sysmon con las técnicas de Mitre que quieras detectar</p>
+    </div>
+    <div class="modal-body row mt-4">
+      <div class="col-md-6 d-flex justify-content-center">
+        <span>
+          <h2 class="text-center">Carga tu fichero de técnicas</h2>
+          <p class="text-secondary fs-5">Pincha aquí para cargar directamente tu fichero JSON con las reglas seleccionadas</p>
+           <div class="container-fluid d-flex justify-content-center">
+               <button type="button" onclick="scrollSubirFichero" class="btn btn-primary btn-lg btn-block">Subir fichero</button>
+           </div>
+        </span>
+      </div>
+      <div class="col-md-6 d-flex justify-content-center mr-4">
+        <span>
+          <h2 class="text-center">Crea tu fichero de técnicas</h2>
+          <p class="text-secondary fs-5">Personaliza tu fichero de configuración de Sysmon seleccionando técnicas de Mitre</p>
+            <div class="container-fluid d-flex justify-content-center">
+               <button type="button" onclick="scrollCrearFichero" class="btn btn-primary btn-lg btn-block">Crear mi fichero personalizado</button>
+           </div>
+        </span>
+      </div>
+    </div>
+    <!--- PARA OCULTAR COLLAPSE-->
+    <div id="paso1" class="mt-5 justify-content-center">
+      <h2 class="text-center">Elige un nivel de detección</h2>
+      <div class="container-fluid d-flex justify-content-center">
+          <button id="1" onclick="myFunction(this.id)" type="button" class="btn btn-success btn-lg">Bajo</button>
+          <button id="2" onclick="myFunction(this.id)" type="button" class="btn btn-lg btn-warning">Medio</button>
+          <button id="3" onclick="myFunction(this.id)" type="button"  class="btn btn-lg btn-danger">Alto</button>
+      </div>
+         <div class="container-fluid d-flex justify-content-center">
+             <div id="matrixwhite" class="cdb-iframe" style="display:block">
+                <iframe id="mat_frame_white" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_blanco.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+            </div>
+             <div id="matrixlow" style="display:none">
+                <iframe id="mat_frame_low" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_low.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+            </div>
+            <div id="matrixmid" style="display:none">
+                <iframe id="mat_frame_mid" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_mid.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+            </div>
+            <div id="matrixhigh" style="display:none">
+                <iframe id="mat_frame_high" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_high.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
+            </div>
+         </div>
+    </div>
+      <h2 class="text-center">Carga tu fichero de técnicas</h2>
+    <div id="paso2" class="container-fluid d-flex justify-content-center mt-5">
+        <form class="mt-5" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+                {{ form.file }}
+            </p>
+            <p><input type="submit" class="form-control-file" value="Upload"/></p>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+            <div class="m-5 form-group">
+                <label for="exampleFormControlSelect1">Selecciona los eventos en los que deseas reglas de exclusión</label>
+                    <select multiple class="form-control" id="exampleFormControlSelect1">
+                      <option>Evento 1: Creación de proceso</option>
+                      <option>Evento 3: Conexión de red</option>
+                      <option>Evento 7: Imagen cargada</option>
+                      <option>Evento 8: Creación de hilo remoto</option>
+                      <option>Evento 10: Acceso a proceso</option>
+                        <option>Evento 11: Creación de fichero</option>
+                      <option>Eventos 12, 13 y 14: Evento de registro</option>
+                         <option>Eventos 17 y 18: Eventos de tuberías (pipes)</option>
+                      <option>Evento 22: Query Dns</option>
+                    </select>
+                <p class="text-center mt-2"><input type="submit" class="form-control-file" value="Guardar"/></p>
+            </div>
+            </form>
+            <form method="post">
+                {% csrf_token %}
+            <div class="m-5 form-group">
+                <label for="exampleFormControlTextarea1">Direcciones IP a excluir (separadas por comas)</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                 <p class="text-center mt-2"><input type="submit" class="form-control-file" value="Guardar"/></p>
+            </div>
+                </form>
+  </div>
+  </body>
+</html>
