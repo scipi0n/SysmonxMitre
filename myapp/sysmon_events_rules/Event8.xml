@@ -1,0 +1,28 @@
+<Event8>
+    <RuleGroup name="8_include" groupRelation="or">
+            <CreateRemoteThread onmatch="include">
+            </CreateRemoteThread>
+         </RuleGroup>
+    <SourceImage name="T1055.001" condition="begin with">C:\</SourceImage>
+    <SourceImage name="T1055.001" condition="begin with">\\</SourceImage>
+    <SourceImage name="T1055.012" condition="begin with">C:\</SourceImage>
+    <SourceImage name="T1055.012" condition="begin with">\\</SourceImage>
+
+    <RuleGroup name="8_exclude" groupRelation="or">
+      <!--Default to log all and exclude a few common processes-->
+      <CreateRemoteThread onmatch="exclude">
+        <SourceImage condition="is">C:\Windows\System32\svchost.exe</SourceImage>
+        <SourceImage condition="is">C:\Windows\System32\wininit.exe</SourceImage>
+        <SourceImage condition="is">C:\Windows\System32\csrss.exe</SourceImage>
+        <SourceImage condition="is">C:\Windows\System32\services.exe</SourceImage>
+        <SourceImage condition="is">C:\Windows\System32\winlogon.exe</SourceImage>
+        <SourceImage condition="is">C:\Windows\System32\audiodg.exe</SourceImage>
+        <Rule groupRelation="and">
+          <SourceImage condition="is">C:\Windows\System32\dwm.exe</SourceImage>
+          <TargetImage condition="is">C:\Windows\System32\csrss.exe</TargetImage>
+        </Rule>
+        <TargetImage condition="end with">Google\Chrome\Application\chrome.exe</TargetImage>
+        <SourceImage condition="is">C:\Windows\System32\wbem\WmiPrvSE.exe</SourceImage>
+      </CreateRemoteThread>
+    </RuleGroup>
+</Event8>

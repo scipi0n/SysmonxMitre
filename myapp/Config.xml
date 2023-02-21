@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sysmon schemaversion="4.60">
+    <HashAlgorithms>*</HashAlgorithms>
+      <!-- This now also determines the file names of the files preserved (String) -->
+      <CheckRevocation>False</CheckRevocation>
+      <!-- Setting this to true might impact performance -->
+      <DnsLookup>False</DnsLookup>
+      <!-- Disables lookup behavior, default is True (Boolean) -->
+      <ArchiveDirectory>Sysmon</ArchiveDirectory>
+      <!-- Sets the name of the directory in the C:\ root where preserved files will be saved (String)-->
+      <EventFiltering>
+        <!--hola-->
+
+      </EventFiltering>
+</Sysmon>

@@ -4,7 +4,6 @@ from . import views
 
 
 urlpatterns = [
-
     path('', views.home),
-    path('levelFunc',views.levelFunc,name='levelFunc')
+    path('upload_file', views.upload_file, name='upload_file')
 ]

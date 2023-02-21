@@ -1,0 +1,121 @@
+<Event7>
+    <RuleGroup name="7_include" groupRelation="or">
+            <ImageLoad onmatch="include">
+            </ImageLoad>
+         </RuleGroup>
+    <Image name="T1053.002" condition="image">at.exe</Image>
+    <Image name="T1053.003" condition="image">schtasks.exe</Image>
+    <Rule name="T1055.001" groupRelation="and"> <OriginalFileName name="T1055.001" condition="is">clr.dll</OriginalFileName> <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.001" groupRelation="and">
+    <OriginalFileName name="T1055.001" condition="is">clrjit.dll</OriginalFileName>
+     <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+    </Rule>
+
+    <Rule name="T1055.001" groupRelation="and">
+    <OriginalFileName name="T1055.001" condition="is">mscoreei.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.001" groupRelation="and">
+    <OriginalFileName name="T1055.001" condition="is">mscoree.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+    <Rule name="T1055.001" groupRelation="and">
+    <OriginalFileName name="T1055.001" condition="is">mscoreeis.dll</OriginalFileName>
+     <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.001" groupRelation="and">
+    <OriginalFileName name="T1055.001" condition="is">mscorlib.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.001" groupRelation="and">
+    <OriginalFileName name="T1055.001" condition="is">mscorlib.ni.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule groupRelation="and" name="T1055.001">
+    <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image> <ImageLoaded condition="begin with">C:\Windows\assembly\</ImageLoaded>
+    </Rule>
+    <Rule groupRelation="and" name="T1055.001">
+    <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image> <ImageLoaded condition="begin with">C:\Windows\Microsoft.NET\assembly\GAC_MSIL</ImageLoaded> </Rule>
+    <Rule groupRelation="and" name="T1055.001">
+    <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image> <OriginalFileName condition="is">clr.dll</OriginalFileName> </Rule>
+    <Rule name="T1055.012" groupRelation="and">
+    <OriginalFileName name="T1055.012" condition="is">clrjit.dll</OriginalFileName>
+     <Image condition="excludes">C:\Windows\Microsoft.NET\</Image>
+    </Rule>
+
+    <Rule name="T1055.012" groupRelation="and">
+    <OriginalFileName name="T1055.012" condition="is">mscoreei.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.012" groupRelation="and">
+    <OriginalFileName name="T1055.012" condition="is">mscoree.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+    <Rule name="T1055.012" groupRelation="and">
+    <OriginalFileName name="T1055.012" condition="is">mscoreeis.dll</OriginalFileName>
+     <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.012" groupRelation="and">
+    <OriginalFileName name="T1055.012" condition="is">mscorlib.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule name="T1055.012" groupRelation="and">
+    <OriginalFileName name="T1055.012" condition="is">mscorlib.ni.dll</OriginalFileName>
+    <Image condition="excludes">C:\Windows\Microsoft.NET\</Image> </Rule>
+
+    <Rule groupRelation="and" name="T1055.012">
+    <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image> <ImageLoaded condition="begin with">C:\Windows\assembly\</ImageLoaded>
+    </Rule>
+    <Rule groupRelation="and" name="T1055.012">
+    <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image> <ImageLoaded condition="begin with">C:\Windows\Microsoft.NET\assembly\GAC_MSIL</ImageLoaded> </Rule>
+    <Rule groupRelation="and" name="T1055.012">
+    <Image condition="contains all">C:\Program Files;\Microsoft Office\root\Office</Image> <OriginalFileName condition="is">clr.dll</OriginalFileName> </Rule>
+    <ImageLoaded name="T1558.001" condition="contains any">mimikatz.dll;mimilib.dll;krb5_32.dll;krb5_64.dll;mimikatz.exe</ImageLoaded>
+    <ImageLoaded name="T1482" condition="contains">activeds.dll</ImageLoaded>
+    <ImageLoaded name="T1550.003" condition="contains any">mimikatz.dll;mimilib.dll;krb5_32.dll;krb5_64.dll;mimikatz.exe</ImageLoaded>
+
+    <RuleGroup name="7_exclude" groupRelation="or">
+      <ImageLoad onmatch="exclude">
+		<Image condition="contains">splunk</Image>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Windows\System32\cscript.exe</Image>
+          <OriginalFileName condition="is">scrobj.dll</OriginalFileName>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image name="technique_id=T1137,technique_name=Office Application Startup" condition="end with">VSTOInstaller.exe</Image>
+          <ImageLoaded condition="begin with">C:\Windows\</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\FileSyncTelemetryExtensions.dll</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\FileCoAuthLib.dll</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\OneDriveTelemetryStable.dll</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\vcruntime140.dll</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\UpdateRingSettings.dll</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\LoggingPlatform.dll</ImageLoaded>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="contains all"> C:\Users\;\AppData\Local\Microsoft\OneDrive;\FileCoAuth.exe</Image>
+          <ImageLoaded condition="contains all">C:\Users\;\AppData\Local\Microsoft\OneDrive\;\FileCoAuth.exe</ImageLoaded>
+        </Rule>
+      </ImageLoad>
+    </RuleGroup>
+
+
+
+
+</Event7>

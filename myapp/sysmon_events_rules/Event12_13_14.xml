@@ -1,0 +1,158 @@
+<Event12>
+    <RuleGroup name="12_13_14_include" groupRelation="or">
+            <RegistryEvent onmatch="include">
+            </RegistryEvent>
+         </RuleGroup>
+    <TargetObject name="T1133" condition="contains">HKLM\Software\Wow6432Node\Google\Chrome\Extensions\</TargetObject>
+    <TargetObject name="T1053.003" condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree</TargetObject>
+    <TargetObject name="T1569.002" condition="contains">HKLM\SYSTEM\CurrentControlSet\Services</TargetObject>
+    <TargetObject name="T1569.002" condition="contains">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</TargetObject>
+    <TargetObject name="T1569.002" condition="contains">HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</TargetObject>
+    <TargetObject name="T1569.002" condition="contains">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce</TargetObject>
+    <TargetObject name="T1569.002" condition="contains">HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">\CurrentVersion\Run</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">\Policies\Explorer\Run</TargetObject>
+    <TargetObject name="T1547.001" condition="contains all">HKLM\SYSTEM\;Control\Session Manager\BootExecute</TargetObject>
+    <TargetObject name="T1547.001" condition="contains all">HKLM\SYSTEM\;Control\Session Manager\excludefromknowndlls</TargetObject>
+    <TargetObject name="T1547.001" condition="contains all">HKLM\SYSTEM\;Control\Session Manager\safedllsearchmode</TargetObject>
+    <TargetObject name="T1547.001" condition="contains all">HKLM\SYSTEM\;Control\Session Manager\setupexecute</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Startup</TargetObject>
+    <TargetObject name="T1547.001" condition="contains all">software\microsoft\windows nt\currentversion\accessibility\ATs\;\StartExe</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">software\microsoft\windows nt\currentversion\windows\run\</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">software\microsoft\windows\currentversion\explorer\shell folders\common startup</TargetObject>
+    <TargetObject name="T1547.001" condition="contains">software\microsoft\windows\currentversion\explorer\shell folders\startup</TargetObject>
+    <TargetObject name="T1547.001" condition="begin with">hklm\software\microsoft\command processor\autorun</TargetObject>
+    <TargetObject name="T1547.001" condition="begin with">HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram</TargetObject>
+    <TargetObject name="T1548.002" condition="begin with">HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System\EnableLUA</TargetObject>
+    <TargetObject name="T1558.001" condition="contains">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions{7b849a69-220f-451e-b3f3-2cb811d7d4ae}</TargetObject>
+    <TargetObject name="T1558.001" condition="contains">HKLM\SECURITY\Policy\Secrets</TargetObject>
+    <TargetObject name="T1558.001" condition="contains"> HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\SessionData</TargetObject>
+    <TargetObject name="T1558.001" condition="contains">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers{e48525c0-4e5b-4b4d-9b4d-4b8bbe50ba4b}</TargetObject>
+    <TargetObject name="T1558.001" condition="contains">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers{e48525c0-4e5b-4b4d-9b4d-4b8bbe50ba4b}\Kerberos</TargetObject>
+    <TargetObject name="T1021.001" condition="is">HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\MaxInstanceCount</TargetObject>
+    <TargetObject name="T1021.001" condition="is">HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services\RaunSolicit</TargetObject>
+    <TargetObject name="T1550.003" condition="contains">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\GPExtensions{7b849a69-220f-451e-b3f3-2cb811d7d4ae}</TargetObject>
+    <TargetObject name="T1550.003" condition="contains">HKLM\SECURITY\Policy\Secrets</TargetObject>
+    <TargetObject name="T1550.003" condition="contains"> HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\SessionData</TargetObject>
+    <TargetObject name="T1550.003" condition="contains">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers{e48525c0-4e5b-4b4d-9b4d-4b8bbe50ba4b}</TargetObject>
+    <TargetObject name="T1550.003" condition="contains">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers{e48525c0-4e5b-4b4d-9b4d-4b8bbe50ba4b}\Kerberos</TargetObject>
+    <TargetObject name="T1489" condition="contains">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services</TargetObject>
+    <TargetObject name="T1489" condition="contains">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update</TargetObject>
+    <TargetObject name="T1489" condition="contains">HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</TargetObject>
+
+    <RuleGroup name="12_13_14_exclude" groupRelation="or">
+      <RegistryEvent onmatch="exclude">
+        <Image condition="is">C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\aciseposture.exe</Image>
+        <Image condition="is">C:\Program Files (x86)\Cisco\Cisco AnyConnect Secure Mobility Client\vpnagent.exe</Image>
+        <Image condition="is">C:\Program Files\Cylance\Optics\CyOptics.exe</Image>
+        <Image condition="is">C:\Program Files\Cylance\Desktop\CylanceSvc.exe</Image>
+        <TargetObject condition="end with">Toolbar\WebBrowser</TargetObject>
+        <TargetObject condition="end with">Toolbar\WebBrowser\ITBar7Height</TargetObject>
+        <TargetObject condition="end with">Toolbar\ShellBrowser\ITBar7Layout</TargetObject>
+        <TargetObject condition="end with">Internet Explorer\Toolbar\Locked</TargetObject>
+        <TargetObject condition="end with">ShellBrowser</TargetObject>
+        <Image condition="is">C:\Program Files (x86)\Ivanti\Workspace Control\pfwsmgr.exe</Image>
+        <Image condition="is">C:\Program Files\RES Software\Workspace Manager\pfwsmgr.exe</Image>
+        <Image condition="begin with">C:\Program Files (x86)\Kaspersky Lab\Kaspersky Internet Security </Image>
+        <Image condition="begin with">C:\Program Files\Kaspersky Lab\Kaspersky Internet Security </Image>
+        <Image condition="is">C:\Program Files\McAfee\Endpoint Encryption Agent\MfeEpeHost.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Endpoint Security\Adaptive Threat Protection\mfeatp.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Endpoint Security\Endpoint Security Platform\mfeesp.exe</Image>
+        <Image condition="is">C:\Program Files\Common Files\McAfee\Engine\AMCoreUpdater\amupdate.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Agent\masvc.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Agent\x86\mfemactl.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Agent\x86\McScript_InUse.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Agent\x86\macompatsvc.exe</Image>
+        <Image condition="is">C:\Program Files\McAfee\Endpoint Security\Threat Prevention\mfeensppl.exe</Image>
+        <Image condition="begin with">C:\Program Files\Common Files\McAfee\Engine\scanners</Image>
+        <Image condition="is">C:\Program Files\Common Files\McAfee\AVSolution\mcshield.exe</Image>
+        <Image condition="is">C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe</Image>
+        <Image condition="is">C:\Program Files\Windows Defender Advanced Threat Protection\SenseCncProxy.exe</Image>
+        <Image condition="is">C:\Program Files\Windows Defender Advanced Threat Protection\SenseIR.exe</Image>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Program Files\Microsoft Monitoring Agent\Agent\HealthService.exe</Image>
+          <TargetObject condition="begin with">HKLM\System\CurrentControlSet\Services\HealthService\Parameters\Management Groups</TargetObject>
+        </Rule>
+        <Image condition="is">C:\Program Files\ownCloud\owncloud.exe</Image>
+        <Image condition="is">C:\Program Files (x86)\ownCloud\owncloud.exe</Image>
+        <Rule groupRelation="and">
+          <Image condition="image">svchost.exe</Image>
+          <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tasks</TargetObject>
+        </Rule>
+        <Image condition="begin with">C:\Program Files\SentinelOne\Sentinel Agent</Image>
+        <Image condition="is">System</Image>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Program Files\VMware\VMware Tools\vmtoolsd.exe</Image>
+          <TargetObject condition="is">HKLM\System\CurrentControlSet\Services\Tcpip\Parameters</TargetObject>
+        </Rule>
+        <Image condition="is">C:\Program Files (x86)\Webroot\WRSA.exe</Image>
+        <Image condition="is">C:\Program Files\WIDCOMM\Bluetooth Software\btwdins.exe</Image>
+        <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Audit</TargetObject>
+        <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Audit\AuditPolicy</TargetObject>
+        <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Audit\PerUserAuditing\System</TargetObject>
+        <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\SspiCache</TargetObject>
+        <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Control\Lsa\Kerberos\Domains</TargetObject>
+        <TargetObject condition="end with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit</TargetObject>
+        <TargetObject condition="contains">\OpenWithProgids</TargetObject>
+        <TargetObject condition="end with">\OpenWithList</TargetObject>
+        <TargetObject condition="end with">\UserChoice</TargetObject>
+        <TargetObject condition="end with">\UserChoice\ProgId</TargetObject>
+        <TargetObject condition="end with">\UserChoice\Hash</TargetObject>
+        <TargetObject condition="end with">\OpenWithList\MRUList</TargetObject>
+        <TargetObject condition="end with">} 0xFFFF</TargetObject>
+        <Image condition="end with">Office\root\integration\integrator.exe</Image>
+        <Image condition="is">C:\WINDOWS\system32\backgroundTaskHost.exe</Image>
+        <Image condition="is">C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeClickToRun.exe</Image>
+        <Image condition="is">C:\Program Files\Windows Defender\MsMpEng.exe</Image>
+        <Image condition="is">C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy\SearchUI.exe</Image>
+        <Image condition="is">C:\Program Files\Microsoft Application Virtualization\Client\AppVClient.exe</Image>
+        <TargetObject condition="end with">\CurrentVersion\App Paths</TargetObject>
+        <TargetObject condition="end with">\CurrentVersion\Image File Execution Options</TargetObject>
+        <TargetObject condition="end with">\CurrentVersion\Shell Extensions\Cached</TargetObject>
+        <TargetObject condition="end with">\CurrentVersion\Shell Extensions\Approved</TargetObject>
+        <TargetObject condition="end with">}\PreviousPolicyAreas</TargetObject>
+        <TargetObject condition="contains">\Control\WMI\Autologger\</TargetObject>
+        <TargetObject condition="end with">HKLM\SYSTEM\CurrentControlSet\Services\UsoSvc\Start</TargetObject>
+        <TargetObject condition="end with">\Lsa\OfflineJoin\CurrentValue</TargetObject>
+        <TargetObject condition="end with">\Components\TrustedInstaller\Events</TargetObject>
+        <TargetObject condition="end with">\Components\TrustedInstaller</TargetObject>
+        <TargetObject condition="end with">\Components\Wlansvc</TargetObject>
+        <TargetObject condition="end with">\Components\Wlansvc\Events</TargetObject>
+        <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\</TargetObject>
+        <TargetObject condition="end with">\Directory\shellex</TargetObject>
+        <TargetObject condition="end with">\Directory\shellex\DragDropHandlers</TargetObject>
+        <TargetObject condition="end with">\Drive\shellex</TargetObject>
+        <TargetObject condition="end with">\Drive\shellex\DragDropHandlers</TargetObject>
+        <TargetObject condition="contains">_Classes\AppX</TargetObject>
+        <TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Publishers\</TargetObject>
+        <TargetObject condition="contains all">SOFTWARE;\Microsoft\EnterpriseCertificates\Disallowed</TargetObject>
+        <TargetObject condition="contains all">SOFTWARE;\Microsoft\SystemCertificates\Disallowed</TargetObject>
+        <TargetObject condition="contains">Software\Microsoft\Windows\CurrentVersion\WinTrust\Trust Providers\Software Publishing</TargetObject>
+        <TargetObject condition="is">HKLM\SOFTWARE\Policies\Microsoft\SystemCertificates\Root\Certificates</TargetObject>
+        <Image condition="is">C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy\SearchUI.exe</Image>
+        <Image condition="begin with">C:\$WINDOWS.~BT\</Image>
+        <TargetObject condition="is">HKLM\System\CurrentControlSet\Services\Tcpip\Parameters</TargetObject>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Windows\system32\lsass.exe</Image>
+          <TargetObject condition="contains">HKLM\System\CurrentControlSet\Services</TargetObject>
+        </Rule>
+        <Rule groupRelation="and">
+          <TargetObject condition="contains">SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization</TargetObject>
+          <Image condition="is">C:\Windows\System32\svchost.exe</Image>
+        </Rule>
+        <TargetObject condition="is">HKLM\System\CurrentControlSet\Services\W32Time\Config\LastKnownGoodTime</TargetObject>
+        <TargetObject condition="is">HKLM\System\CurrentControlSet\Services\SmsRouter\State\Registration\Ids</TargetObject>
+        <TargetObject condition="end with">\services\clr_optimization_v2.0.50727_32\Start</TargetObject>
+        <TargetObject condition="end with">\services\clr_optimization_v2.0.50727_64\Start</TargetObject>
+        <TargetObject condition="end with">\services\clr_optimization_v4.0.30319_32\Start</TargetObject>
+        <TargetObject condition="end with">\services\clr_optimization_v4.0.30319_64\Start</TargetObject>
+        <TargetObject condition="end with">\services\DeviceAssociationService\Start</TargetObject>
+        <TargetObject condition="end with">\services\BITS\Start</TargetObject>
+        <TargetObject condition="end with">\services\TrustedInstaller\Start</TargetObject>
+        <TargetObject condition="end with">\services\tunnel\Start</TargetObject>
+        <TargetObject condition="end with">\services\UsoSvc\Start</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+
+</Event12>

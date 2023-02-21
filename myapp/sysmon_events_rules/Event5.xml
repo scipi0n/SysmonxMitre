@@ -1,0 +1,11 @@
+<Event5>
+    <comment1><!--RULES FOR EVENT 5 START HERE --></comment1>
+    <RuleGroup name="5_include" groupRelation="or">
+            <ProcessTerminate onmatch="include">
+            </ProcessTerminate>
+         </RuleGroup>
+    <Image name="T1558.001" condition="contains">mimikatz.exe</Image>
+    <Image name="T1550.003" condition="contains">mimikatz.exe</Image>
+    <comment2><!--RULES FOR EVENT 5 END HERE --></comment2>
+
+</Event5>

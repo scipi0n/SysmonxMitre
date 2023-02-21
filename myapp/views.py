@@ -4,29 +4,31 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from .forms import UploadFileForm
+from .layer_read import layer_reader
 
 def home(req):
-    return render(req,'index.html')
-
-def levelFunc(req):
-    #nombres de las celdas
-    clicked_id = req.GET.get('id',None)
-    if clicked_id=='1':
-        #action low
-        response = {
-            'response' : "https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_low.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false"
-        }
-    elif clicked_id=='2':
-        response = {
-            'response': "https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_mid.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false"
-        }
-    elif clicked_id=='3':
-        response = {
-            'response': "https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_high.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false"
-        }
-
-    else:
-        response = {
-            'response': 'error'
-        }
-    return JsonResponse(response)
+    form = UploadFileForm()
+    req.session['test'] = "0"
+    if req.method == "POST":
+        form = UploadFileForm(req.POST, req.FILES)
+        f = req.FILES['file'].file
+        config = f.read()
+        layer_reader(config)
+        response = HttpResponse(open("myapp/Config_final.xml", 'rb').read())
+        response['Content-Type'] = 'text/plain'
+        response['Content-Disposition'] = 'attachment; filename=config.xml'
+        return response
+        #return render(req, 'index.html', {'response': "ÉXITO, SE HA DESCARGADO EL ARCHIVO DE CONFIGURACIÓN"})
+    return render(req,'index2.html', {'form': form})
+def upload_file(req):
+    if req.method == "POST":
+        form = UploadFileForm(req.POST, req.FILES)
+        f = req.FILES['file'].file
+        config = f.read()
+        layer_reader(config)
+        response = HttpResponse(open("myapp/Config_final.xml", 'rb').read())
+        response['Content-Type'] = 'text/plain'
+        response['Content-Disposition'] = 'attachment; filename=config.xml'
+        return response
+    return render(req, 'index2.html')

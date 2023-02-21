@@ -48,6 +48,33 @@
             link.href = file;
             link.click();
         }
+        function uploadFunc(){
+            var file = "{% static 'config.xml' %}";
+            var link = document.createElement("a");
+            link.download = "config.pdf";
+            link.href = file;
+            link.click();
+        }
+        function funcA(){
+            var x = document.getElementById("step2.5");
+            var y = document.getElementById("step1");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+              }
+            if (y.style.display === "block" ||  document.getElementById("step2").display === "block") {
+                y.style.display = "none";
+                document.getElementById("step2").display = "none";
+              }
+        }function funcB(){
+           var x = document.getElementById("step1");
+            var y = document.getElementById("step2.5");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+              }
+            if (y.style.display === "block") {
+                y.style.display = "none";
+              }
+        }
     </script>
 
 </head>
@@ -58,7 +85,12 @@
   <div id="description" >
 	Generate a Sysmon configuration file choosing the Mitre techniques you want to detect.
 </div>
-  <div id="step1">
+  <div id="both_options">
+      <h3>OPTION A or B?</h3>
+        <button id="up_option" onclick="funcA()">I want to upload my layer file</button>
+        <button id="select_option" onclick="funcB()">I want to create my customized layer</button>
+  </div>
+  <div id="step1" style="display:none">
   <span id="detLevel">
     Select the level of detection:
    </span>
@@ -80,12 +112,28 @@
            <iframe id="mat_frame_high" src="https://mitre-attack.github.io/attack-navigator/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fscipi0n%2FSysmonxMitre%2Fmain%2Flayers%2Flayer_high.json&leave_site_dialog=false&tabs=false&header=false&export_render=false&export_excel=false&comments=false&comment_underline=false&links=false&link_underline=false&metadata=false&clear_annotations=false" width="1300" height="1000" marginwidth="20"></iframe>
         </div>
     </div>
+  <div id="step2.5" style="display:none">
+        <form action="uploadFunc()">
+          <input type="file" id="myFile" name="filename">
+          <input type="submit">
+        </form>
+    </div>
   <div id="step3" style="display:none">
     <span id="download">
       Ready to Download !
      </span>
     <button id="down" class="button download" onclick="downloadFunc()">Download</button>
     </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            {{ form.file }}
+        </p>
+        <p><input type="submit" value="Upload" /></p>
+      </form>
+    <h1>
+        {{ response }}
+    </h1>
 
 </body>
 

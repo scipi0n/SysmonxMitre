@@ -1,0 +1,64 @@
+<Event11>
+    <RuleGroup name="11_include" groupRelation="or">
+            <FileCreate onmatch="include">
+            </FileCreate>
+         </RuleGroup>
+    <Image name="T1189" condition="contains any">firefox.exe;chrome.exe;edge.exe</Image>
+    <TargetFilename name="T1053.003" condition="begin with">C:\Windows\System32\Tasks</TargetFilename>
+    <TargetFilename name="T1053.003" condition="begin with">C:\Windows\Tasks\</TargetFilename>
+    <TargetFilename name="1547.001" condition="contains">\Startup</TargetFilename>
+    <TargetFilename name="T1558.001" condition="end with">golden.bat</TargetFilename>
+    <TargetFilename  name="T1550.003" condition="end with">.kirbi</TargetFilename>
+    <Image name="T1550.003" condition="contains">mimikatz.exe</Image>
+    <TargetFilename name="T1486" condition="contains any">crypt;secret;key</TargetFilename>
+
+    <RuleGroup name="11_exclude" groupRelation="or">
+      <FileCreate onmatch="exclude">
+        <Image condition="is">C:\Program Files (x86)\Dell\CommandUpdate\InvColPC.exe</Image>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Program Files\Elastic\Endpoint\elastic-endpoint.exe</Image>
+          <TargetFilename condition="is">C:\Program Files\Elastic\Endpoint\state\last-document-id.json</TargetFilename>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="begin with">C:\Program Files\Elastic\Agent\data\</Image>
+          <TargetFilename condition="contains all">C:\Program Files\Elastic\Agent\data\;.ndjson</TargetFilename>
+        </Rule>
+        <Image condition="is">C:\Windows\system32\igfxCUIService.exe</Image>
+        <Image condition="is">C:\Program Files (x86)\Ivanti\Workspace Control\pfwsmgr.exe</Image>
+        <Image condition="is">C:\Program Files (x86)\RES Software\Workspace Manager\pfwsmgr.exe</Image>
+        <Image condition="is">C:\Program Files\Common Files\Microsoft Shared\ClickToRun\OfficeC2RClient.exe</Image>
+        <Image condition="is">C:\Windows\System32\smss.exe</Image>
+        <Image condition="is">C:\Windows\system32\CompatTelRunner.exe</Image>
+        <Image condition="is">C:\Windows\system32\wbem\WMIADAP.EXE</Image>
+        <TargetFilename condition="begin with">C:\Windows\System32\DriverStore\Temp\</TargetFilename>
+        <TargetFilename condition="begin with">C:\Windows\System32\wbem\Performance\</TargetFilename>
+        <TargetFilename condition="end with">WRITABLE.TST</TargetFilename>
+        <TargetFilename condition="contains">\AppData\Roaming\Microsoft\Windows\Recent\</TargetFilename>
+        <TargetFilename condition="begin with">C:\$WINDOWS.~BT\Sources\SafeOS\SafeOS.Mount\</TargetFilename>
+        <Image condition="begin with">C:\WINDOWS\winsxs\amd64_microsoft-windows</Image>
+        <Image condition="is">c:\Program Files\Microsoft Security Client\MsMpEng.exe</Image>
+        <Rule groupRelation="and">
+          <Image condition="image">Outlook.exe</Image>
+          <TargetFilename condition="contains">Roaming\Microsoft\Outlook\Outlook.xml</TargetFilename>
+        </Rule>
+        <Image condition="is">c:\windows\system32\provtool.exe</Image>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Windows\system32\wsmprovhost.exe</Image>
+          <TargetFilename condition="contains all">C:\Users\;\AppData\Local\Temp;__PSScriptPolicyTest;.ps1</TargetFilename>
+        </Rule>
+        <Rule groupRelation="and">
+          <Image condition="is">C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe</Image>
+          <TargetFilename condition="contains all">C:\Windows\Temp;__PSScriptPolicyTest;.ps1</TargetFilename>
+          <User condition="is">NT AUTHORITY\SYSTEM</User>
+        </Rule>
+        <Image condition="is">C:\WINDOWS\CCM\CcmExec.exe</Image>
+        <TargetFilename condition="begin with">C:\Windows\CCM</TargetFilename>
+        <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\PLA\FabricTraces</TargetFilename>
+        <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\SoftwareProtectionPlatform\SvcRestartTask</TargetFilename>
+        <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\Customer Experience Improvement Program\Server\ServerRoleUsageCollector</TargetFilename>
+        <TargetFilename condition="begin with">C:\Windows\System32\Tasks\Microsoft\Windows\Customer Experience Improvement Program\Server\ServerCeipAssistant</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+
+
+</Event11>
